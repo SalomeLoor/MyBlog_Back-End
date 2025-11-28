@@ -7,7 +7,7 @@ import { RouterPost } from './src/Routes/post.router.js';
 import morgan from 'morgan'; // Importa morgan para mostrar las peticiones en consola
 
 
-const _PORT = PORT || 3000;
+const _PORT = process.env.PORT || PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(morgan('dev')); // Middleware para mostrar las peticiones en consola
@@ -16,11 +16,13 @@ app.use(morgan('dev')); // Middleware para mostrar las peticiones en consola
 app.use(cors({
     origin: [
         'http://localhost:8100',
+        process.env.FRONTEND_URL
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true // si en algún momento usas cookies
+    credentials: true
 }));
+
 
 // ✅ Rutas
 app.use('/api', RouterUser);
