@@ -9,10 +9,6 @@ import morgan from 'morgan'; // Importa morgan para mostrar las peticiones en co
 
 const _PORT = process.env.PORT || PORT || 3000;
 const app = express();
-app.use(express.json());
-app.use(morgan('dev')); // Middleware para mostrar las peticiones en consola
-
-// ✅ Configuración actualizada de CORS
 app.use(cors({
     origin: [
         'http://localhost:8100',
@@ -22,6 +18,10 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }));
+app.use(express.json());
+app.use(morgan('dev')); // Middleware para mostrar las peticiones en consola
+
+// ✅ Configuración actualizada de CORS
 
 //app.options("*", cors());
 
