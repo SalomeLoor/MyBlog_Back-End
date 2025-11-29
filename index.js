@@ -16,7 +16,7 @@ app.use(morgan('dev')); // Middleware para mostrar las peticiones en consola
 app.use(cors({
     origin: [
         'http://localhost:8100',
-        process.env.FRONTEND_URL
+        'https://myblog-front-end.onrender.com/'
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
