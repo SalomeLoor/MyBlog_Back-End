@@ -23,6 +23,9 @@ app.use(cors({
     credentials: true
 }));
 
+app.options("*", cors());
+
+
 
 // ✅ Rutas
 app.use('/api', RouterUser);
